@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajouter une citation</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background: #f0f2f5; display: flex; justify-content: center; align-items: center; height: 100vh; }
+        form { background: white; padding: 40px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); width: 400px; }
+        h2 { margin-top: 0; }
+        input, textarea { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; }
+        button { width: 100%; padding: 12px; background: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 1em; }
+        button:hover { background: #218838; }
+        .back { display: block; text-align: center; margin-top: 10px; color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <form method="POST">
+        {% csrf_token %}
+        <h2>Nouvelle Citation</h2>
+        <label>Auteur :</label>
+        <input type="text" name="auteur" placeholder="Ex: Albert Einstein" required>
+        
+        <label>Citation :</label>
+        <textarea name="texte" rows="4" placeholder="Ta phrase inspirante..." required></textarea>
+        
+        <button type="submit">Enregistrer</button>
+        <a href="{% url 'liste_citations' %}" class="back">Retour au mur</a>
+    </form>
+</body>
+</html>
